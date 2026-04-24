@@ -6,10 +6,163 @@
 body{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     min-height: 100vh;
     background: linear-gradient(#00f,#fff);   
 }
+.man{
+    position: relative;
+    z-index: 2;
+    transform: translateX(-60px) translateY(-100px);
+}
+.man span{
+    position: absolute;
+    left: 80px;
+    width:80px;
+    height:30px;
+    background: #fff;
+    display: block;
+    border-radius: 40px 80px 20px 20px / 30px 60px 10px 10px;
+    border-bottom: 5px solid #555;
+    animation: animate 2s linear infinite;
+    z-index: 2;
+}
+.man span:nth-child(2),
+.man span:nth-child(2) .legs{
+    animation-delay: -1s;
+}
+@keyframes animate{
+    0%{
+        left:90px;
+        top:0;
+    }
+    50%{
+        left: -90px;
+        top: 0;
+    }
+    75%{
+        top:-60px;
+
+    }
+    100%{
+        left: 90px;
+        top: 0;
+    }
+
+}
+.man span .legs{
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 5px;
+    width: 40px;
+    height: 110px;
+    background: #008eff;
+    z-index: -1;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transform-origin: bottom center;
+    animation: animate2 2s linear infinite;
+}
+@keyframes animate2{
+    0%{
+        transform: rotate(-30deg);
+    }
+    50%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(-30deg);
+    }
+}
+.man span .legs::before{
+    content:'';
+    position: absolute;
+    top: -80px;
+    width: 40px;
+    height: 110px;
+    background: #008eff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transform-origin: bottom center;
+    animation:animate3 2s linear infinite;
+}
+@keyframes animate3{
+    0%{
+        transform:rotate(0deg);
+
+    }
+    50%{
+        transform:rotate(-30deg);
+        
+    }
+    0%{
+        transform:rotate(0deg);
+        
+    }
+}
+.man span:nth-child(2) .legs::before{
+    animation-delay: 1s;
+}
+.body{
+    position: absolute;
+    top: -360px;
+    left: -40px;
+    width: 110px;
+    height: 240px;
+    background: #fff;
+    z-index: 2;
+    transform: rotate(5deg);
+    animation: animate4 2s linear infinite;
+    border-radius: 40px 50px 20px 20px / 30px 100px 10px 10px;
+}
+.body::before{
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 25%;
+    transform-origin: top;
+    transform: rotate(-15deg);
+    width: 40px;
+    height: 180px;
+    background: #fff;
+    border: 2px solid rgba(0,0,0,0.5);
+    border-top: none;
+    border-bottom: 30px solid #008eff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    animation: animateHand 2s linear infinite;
+    
+}
+@keyframes animateHand{
+    0%,100%{
+        transform: rotate(-10deg);
+    }
+    50%{
+        rotate:(10deg);
+    }
+
+}
+.head{
+    position: absolute;
+    top: -460px;
+    left:0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    z-index: 2;
+    animation: animate4 2s linear infinite;
+    background: #fff;
+}
+@keyframes animate4{
+    0%,100%{
+        transform: rotate(10deg) translateY(0);
+}
+    50%{
+        transform: rotate(10deg) translateY(-20px);
+    }
+}
+
 .road{
     position: absolute;
     bottom: 0;
@@ -33,5 +186,10 @@ body{
     animation: animateRoad 2s linear infinite;
 }
 @keyframes animateRoad{
-    
+    0%{
+        background-position-x: 200px;
+    }
+    100%{
+        background-position-x: 0px;
+    }
 }
